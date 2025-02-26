@@ -1,0 +1,975 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+   <head>
+      <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+      <meta name="description" content="{{project.meta.ogDescription}}">
+      <meta name="theme-color" content="#ffffff">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="robots" content="{{project.meta.robotsMeta}}">
+      
+      <title>{{project.seoTitle}}</title>
+      <!-- SEO Description -->
+      <meta name="description" content="{{project.seoDescription}}">
+
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+       
+      
+      <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+
+      <!-- Performance optimization: Preload critical resources -->
+      <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+      
+      <!-- Header Scripts -->
+      <script id="header-scripts">
+        // This script tag will be replaced with actual scripts.head content
+        if (window.scripts && window.scripts.head) {
+          document.getElementById('header-scripts').outerHTML = window.scripts.head;
+        }
+      </script>
+
+      <!-- Preconnect -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+      <!-- Font stylesheet -->
+
+      <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
+
+      <!-- Core CSS -->
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                primary: {
+                  DEFAULT: '{{settings.colors.primary}}',
+                  50: '#f8f8f8',
+                  100: '#e8e8e8', 
+                  200: '#d3d3d3',
+                  300: '#a3a3a3',
+                  400: '#737373',
+                  500: '#525252',
+                  600: '#404040',
+                  700: '#262626',
+                  800: '#171717',
+                  900: '#0a0a0a',
+                  950: '#030303',
+                },
+                secondary: {
+                  DEFAULT: '{{settings.colors.secondary}}',
+                  50: '#f8f8f8',
+                  100: '#e8e8e8',
+                  200: '#d3d3d3', 
+                  300: '#a3a3a3',
+                  400: '#737373',
+                  500: '#525252',
+                  600: '#404040',
+                  700: '#262626',
+                  800: '#171717',
+                  900: '#0a0a0a',
+                  950: '#030303',
+                },
+                accent: {
+                  DEFAULT: '{{settings.colors.accent}}',
+                  50: '#f8f8f8',
+                  100: '#e8e8e8',
+                  200: '#d3d3d3',
+                  300: '#a3a3a3', 
+                  400: '#737373',
+                  500: '#525252',
+                  600: '#404040',
+                  700: '#262626',
+                  800: '#171717',
+                  900: '#0a0a0a',
+                  950: '#030303',
+                },
+              },
+              fontFamily: {
+                sans: ['{{settings.fonts.primary}}', 'Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                heading: ['{{settings.fonts.secondary}}', 'Inter', 'system-ui', 'sans-serif'],
+                body: ['{{settings.fonts.secondary}}', 'Inter', 'system-ui', 'sans-serif'],
+              },
+              spacing: {
+                '18': '4.5rem',
+                '22': '5.5rem',
+                '30': '7.5rem',
+              },
+              maxWidth: {
+                '8xl': '88rem',
+                '9xl': '96rem',
+              },
+              animation: {
+                'fade-in': 'fadeIn 0.5s ease-in',
+                'fade-out': 'fadeOut 0.5s ease-out',
+                'slide-up': 'slideUp 0.5s ease-out',
+                'slide-down': 'slideDown 0.5s ease-out',
+                'slide-left': 'slideLeft 0.5s ease-out',
+                'slide-right': 'slideRight 0.5s ease-out',
+                'scale-in': 'scaleIn 0.5s ease-out',
+                'scale-out': 'scaleOut 0.5s ease-out',
+                'spin-slow': 'spin 3s linear infinite',
+                'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                'bounce-slow': 'bounce 3s infinite',
+                'float': 'float 3s ease-in-out infinite',
+              },
+              keyframes: {
+                fadeIn: {
+                  '0%': { opacity: '0' },
+                  '100%': { opacity: '1' },
+                },
+                fadeOut: {
+                  '0%': { opacity: '1' },
+                  '100%': { opacity: '0' },
+                },
+                slideUp: {
+                  '0%': { transform: 'translateY(20px)', opacity: '0' },
+                  '100%': { transform: 'translateY(0)', opacity: '1' },
+                },
+                slideDown: {
+                  '0%': { transform: 'translateY(-20px)', opacity: '0' },
+                  '100%': { transform: 'translateY(0)', opacity: '1' },
+                },
+                slideLeft: {
+                  '0%': { transform: 'translateX(20px)', opacity: '0' },
+                  '100%': { transform: 'translateX(0)', opacity: '1' },
+                },
+                slideRight: {
+                  '0%': { transform: 'translateX(-20px)', opacity: '0' },
+                  '100%': { transform: 'translateX(0)', opacity: '1' },
+                },
+                scaleIn: {
+                  '0%': { transform: 'scale(0.9)', opacity: '0' },
+                  '100%': { transform: 'scale(1)', opacity: '1' },
+                },
+                scaleOut: {
+                  '0%': { transform: 'scale(1.1)', opacity: '0' },
+                  '100%': { transform: 'scale(1)', opacity: '1' },
+                },
+                float: {
+                  '0%, 100%': { transform: 'translateY(0)' },
+                  '50%': { transform: 'translateY(-10px)' },
+                },
+              },
+              aspectRatio: {
+                'portrait': '3/4',
+                'landscape': '4/3',
+                'ultrawide': '21/9',
+              },
+            },
+          },
+          variants: {
+            extend: {
+              opacity: ['disabled'],
+              cursor: ['disabled'],
+              backgroundColor: ['active', 'disabled'],
+              textColor: ['active', 'disabled'],
+            },
+          },
+        }
+      });
+      </script>
+
+      <!-- Utilities and Components -->
+      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.3/cdn.min.js"></script>
+      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.45.1/apexcharts.min.js"></script>
+      
+      <!-- Optimized Font Loading -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      
+      <!-- Icons -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+            integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+      <!-- Dynamic Meta Tags -->
+      <meta name="description" content="{{project.meta.ogDescription}}">
+      <meta name="keywords" content="{{project.meta.keywords}}">
+      <meta name="robots" content="{{project.meta.robotsMeta}}">
+      <meta name="google-site-verification" content="{{project.meta.googleVerification}}">
+      <meta name="baidu-verification" content="{{project.meta.baiduVerification}}">
+      <meta name="yandex-verification" content="{{project.meta.yandexVerification}}">
+      <meta name="bing-verification" content="{{project.meta.bingVerification}}">
+      <meta property="og:title" content="{{project.meta.ogTitle}}">
+      <meta property="og:description" content="{{project.meta.ogDescription}}">
+      <meta property="og:image" content="{{project.meta.ogImage}}">
+      <meta property="og:type" content="website">
+      <meta property="og:locale" content="en_US">
+      <meta property="og:site_name" content="{{project.name}}">
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:title" content="{{project.meta.ogTitle}}">
+      <meta name="twitter:description" content="{{project.meta.ogDescription}}">
+      <meta name="twitter:image" content="{{project.meta.ogImage}}">
+    
+      
+      <link rel="icon" type="image/x-icon" href="{{settings.favicon}}">
+      
+      <style>
+        h1, h2, h3, h4, h5, h6 {
+          font-family: {{settings.fonts.primary}}, Inter, system-ui, sans-serif;
+        }
+        body {
+          font-family: {{settings.fonts.secondary}}, Inter, system-ui, sans-serif;
+        }
+      </style>
+   </head>
+   <body class="antialiased text-gray-800 min-h-screen flex flex-col">
+      <!-- Skip to main content link for accessibility -->
+      <a href="#main-content" 
+         class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:p-4 focus:bg-white focus:text-black">
+         Skip to main content
+      </a>
+
+      <!-- Main content area -->
+      <main id="main-content" class="flex-1 relative h-full">
+        <!-- Content will be injected here -->
+      </main>
+
+      <!-- {bodyScripts} -->
+      
+   </body>
+</html><script>window.projectId = "ac2dcc54-5ffd-4c86-8f40-d4fe689c9762";</script><div id='RolloutPageContent'><element id="65dd884f-c2db-48ea-93cb-5e9e39ee34df" data-section-id="65dd884f-c2db-48ea-93cb-5e9e39ee34df">
+
+
+<div id="root">
+  <nav class="fixed w-full z-50 bg-neutral-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center">
+          <span class="text-2xl font-bold text-[#FF9933]">MahaConnect</span>
+        </div>
+        <div class="hidden md:block">
+          <ul class="ml-10 flex items-baseline space-x-4">
+            <li>
+              <a href="#hero" class="hover:text-[#FF9933] px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+            </li>
+            <li>
+              <a href="#problem" class="hover:text-[#FF9933] px-3 py-2 rounded-md text-sm font-medium transition-colors">Problem</a>
+            </li>
+            <li>
+              <a href="#solution" class="hover:text-[#FF9933] px-3 py-2 rounded-md text-sm font-medium transition-colors">Solution</a>
+            </li>
+            <li>
+              <a href="#features" class="hover:text-[#FF9933] px-3 py-2 rounded-md text-sm font-medium transition-colors">Features</a>
+            </li>
+            <li>
+              <a href="#impact" class="hover:text-[#FF9933] px-3 py-2 rounded-md text-sm font-medium transition-colors">Impact</a>
+            </li>
+            <li>
+              <a href="#download" class="hover:text-[#FF9933] px-3 py-2 rounded-md text-sm font-medium transition-colors">Download</a>
+            </li>
+            <li>
+              <a href="#contact" class="hover:text-[#FF9933] px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
+            </li>
+          </ul>
+        </div>
+        <div class="md:hidden">
+          <button id="mobile-menu-button" aria-label="Menu" class="text-gray-400 hover:text-white">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-neutral-900">
+      <ul class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <li>
+          <a href="#hero" class="hover:text-[#FF9933] block px-3 py-2 rounded-md text-base font-medium transition-colors">Home</a>
+        </li>
+        <li>
+          <a href="#problem" class="hover:text-[#FF9933] block px-3 py-2 rounded-md text-base font-medium transition-colors">Problem</a>
+        </li>
+        <li>
+          <a href="#solution" class="hover:text-[#FF9933] block px-3 py-2 rounded-md text-base font-medium transition-colors">Solution</a>
+        </li>
+        <li>
+          <a href="#features" class="hover:text-[#FF9933] block px-3 py-2 rounded-md text-base font-medium transition-colors">Features</a>
+        </li>
+        <li>
+          <a href="#impact" class="hover:text-[#FF9933] block px-3 py-2 rounded-md text-base font-medium transition-colors">Impact</a>
+        </li>
+        <li>
+          <a href="#download" class="hover:text-[#FF9933] block px-3 py-2 rounded-md text-base font-medium transition-colors">Download</a>
+        </li>
+        <li>
+          <a href="#contact" class="hover:text-[#FF9933] block px-3 py-2 rounded-md text-base font-medium transition-colors">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <script>
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.contains('hidden');
+      if (isHidden) {
+        mobileMenu.classList.remove('hidden');
+      } else {
+        mobileMenu.classList.add('hidden');
+      }
+    });
+  </script>
+</div>
+</element><element id="ada4ff7e-be06-4dcf-a824-543505856da1" data-section-id="ada4ff7e-be06-4dcf-a824-543505856da1">
+
+
+<div id="root">
+  <section id="hero" class="min-h-[70vh] bg-gradient-to-br from-neutral-900 to-neutral-800 text-white pt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center">
+      <div class="text-center py-16 md:py-24 animate__animated animate__fadeIn">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#FF9933] to-[#138808]">
+          MahaConnect: Empowering Rural Maharashtra with Accessible Justice
+        </h1>
+        
+        <p class="text-xl md:text-2xl mb-8 text-gray-300 max-w-3xl mx-auto">
+          A mobile app that allows citizens to file complaints offline and in their local language, bridging the gap between rural communities and law enforcement.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
+          <button class="px-8 py-4 bg-[#FF9933] text-white rounded-lg text-lg font-semibold hover:bg-[#e88a2a] transition-colors animate__animated animate__pulse animate__infinite">
+            Download App
+          </button>
+          <button class="px-8 py-4 border-2 border-[#138808] text-[#138808] hover:bg-[#138808] hover:text-white rounded-lg text-lg font-semibold transition-colors">
+            Learn More
+          </button>
+        </div>
+
+        <div class="mt-16 relative">
+          <div class="absolute inset-0 bg-gradient-to-t from-neutral-900 to-transparent z-10"></div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-neutral-800/50 p-6 rounded-lg backdrop-blur-sm">
+              <div class="text-[#FF9933] text-4xl mb-2">
+                <i class="fas fa-mobile-alt"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Offline First</h3>
+              <p class="text-gray-400">File complaints without internet connectivity</p>
+            </div>
+            <div class="bg-neutral-800/50 p-6 rounded-lg backdrop-blur-sm">
+              <div class="text-[#138808] text-4xl mb-2">
+                <i class="fas fa-language"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Local Language</h3>
+              <p class="text-gray-400">Support for Marathi and other regional languages</p>
+            </div>
+            <div class="bg-neutral-800/50 p-6 rounded-lg backdrop-blur-sm">
+              <div class="text-[#FF9933] text-4xl mb-2">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Secure</h3>
+              <p class="text-gray-400">End-to-end encrypted data protection</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</element><element id="ea524454-3227-4f60-9894-0e949d68b7ea" data-section-id="ea524454-3227-4f60-9894-0e949d68b7ea">
+
+
+<div id="root">
+  <section id="problem" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+        <div class="animate__animated animate__fadeInLeft">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6 text-neutral-900">
+            The Challenge of Rural Connectivity and Communication
+          </h2>
+          <p class="text-lg text-neutral-700 mb-8">
+            In rural Maharashtra, poor internet connectivity and language barriers often delay complaint filing, leading to frustration for citizens and inefficiencies for police departments.
+          </p>
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div class="flex-shrink-0">
+                <div class="flex items-center justify-center h-12 w-12 rounded-md bg-[#FF9933] text-white">
+                  <i class="fas fa-wifi-slash text-xl"></i>
+                </div>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-xl font-semibold text-neutral-900">Poor Connectivity</h3>
+                <p class="mt-2 text-neutral-600">Limited internet access in rural areas prevents timely complaint filing</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0">
+                <div class="flex items-center justify-center h-12 w-12 rounded-md bg-[#138808] text-white">
+                  <i class="fas fa-language text-xl"></i>
+                </div>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-xl font-semibold text-neutral-900">Language Barriers</h3>
+                <p class="mt-2 text-neutral-600">Communication gaps between local languages and official documentation</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0">
+                <div class="flex items-center justify-center h-12 w-12 rounded-md bg-[#FF9933] text-white">
+                  <i class="fas fa-clock text-xl"></i>
+                </div>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-xl font-semibold text-neutral-900">Delayed Response</h3>
+                <p class="mt-2 text-neutral-600">Extended processing times due to manual translation and paperwork</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-12 lg:mt-0 animate__animated animate__fadeInRight">
+          <div class="bg-neutral-100 p-8 rounded-xl">
+            <div class="space-y-6">
+              <div class="flex items-center justify-center w-16 h-16 rounded-full bg-red-100 mx-auto">
+                <i class="fas fa-exclamation-triangle text-2xl text-red-600"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-center text-neutral-900">Impact of these Challenges</h3>
+              <ul class="space-y-4">
+                <li class="flex items-center text-neutral-700">
+                  <i class="fas fa-times-circle text-red-500 mr-3"></i>
+                  Delayed justice delivery
+                </li>
+                <li class="flex items-center text-neutral-700">
+                  <i class="fas fa-times-circle text-red-500 mr-3"></i>
+                  Reduced trust in law enforcement
+                </li>
+                <li class="flex items-center text-neutral-700">
+                  <i class="fas fa-times-circle text-red-500 mr-3"></i>
+                  Increased administrative burden
+                </li>
+                <li class="flex items-center text-neutral-700">
+                  <i class="fas fa-times-circle text-red-500 mr-3"></i>
+                  Limited access to legal resources
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</element><element id="f441346a-1701-4fe4-ad01-e49e0191cd01" data-section-id="f441346a-1701-4fe4-ad01-e49e0191cd01">
+
+<div id="root">
+  <section id="solution" class="py-20 bg-neutral-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 animate__animated animate__fadeIn">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">How MahaConnect Works</h2>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+          MahaConnect is a user-friendly mobile app that enables offline complaint logging in local languages like Marathi. Using Bhashini's AI-powered translation, it automatically translates complaints into Hindi or English for police officers. Data is stored locally and synced securely when connectivity is available.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-neutral-800 rounded-xl p-6 transform hover:scale-105 transition-transform duration-300 animate__animated animate__fadeInLeft">
+          <div class="text-[#FF9933] text-4xl mb-4">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-4">Step 1: File Complaint</h3>
+          <p class="text-gray-400">
+            Log complaints offline in your local language using the easy-to-use mobile interface
+          </p>
+        </div>
+
+        <div class="bg-neutral-800 rounded-xl p-6 transform hover:scale-105 transition-transform duration-300 animate__animated animate__fadeInUp">
+          <div class="text-[#138808] text-4xl mb-4">
+            <i class="fas fa-language"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-4">Step 2: AI Translation</h3>
+          <p class="text-gray-400">
+            Bhashini AI automatically translates complaints into Hindi or English for officials
+          </p>
+        </div>
+
+        <div class="bg-neutral-800 rounded-xl p-6 transform hover:scale-105 transition-transform duration-300 animate__animated animate__fadeInRight">
+          <div class="text-[#FF9933] text-4xl mb-4">
+            <i class="fas fa-sync"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-4">Step 3: Secure Sync</h3>
+          <p class="text-gray-400">
+            Data syncs automatically with police systems when internet connectivity is available
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-16 bg-neutral-800 rounded-xl p-8 animate__animated animate__fadeInUp">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div class="space-y-4">
+            <h3 class="text-2xl font-bold mb-4">Smart Features</h3>
+            <ul class="space-y-4">
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-[#138808] mr-3"></i>
+                <span>Works without internet connection</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-[#138808] mr-3"></i>
+                <span>Supports multiple regional languages</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-[#138808] mr-3"></i>
+                <span>End-to-end encrypted data transfer</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-[#138808] mr-3"></i>
+                <span>Real-time status updates</span>
+              </li>
+            </ul>
+          </div>
+          <div class="flex justify-center">
+            <div class="w-24 h-24 rounded-full bg-[#FF9933] flex items-center justify-center">
+              <i class="fas fa-shield-alt text-4xl"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div></element><element id="702acc7a-a681-4690-a4a0-59292f0f7005" data-section-id="702acc7a-a681-4690-a4a0-59292f0f7005">
+
+<div id="root">
+  <section id="features" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 animate__animated animate__fadeIn">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-neutral-900">Key Features</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-neutral-50 rounded-xl p-8 shadow-lg transform hover:-translate-y-2 transition-transform duration-300 animate__animated animate__fadeInUp">
+          <div class="text-[#FF9933] text-4xl mb-6">
+            <i class="fas fa-cloud-upload-alt"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-neutral-900">Offline Complaint Logging</h3>
+          <p class="text-neutral-600">File complaints anytime, even without internet connectivity. Data syncs automatically when connection is restored.</p>
+        </div>
+
+        <div class="bg-neutral-50 rounded-xl p-8 shadow-lg transform hover:-translate-y-2 transition-transform duration-300 animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
+          <div class="text-[#138808] text-4xl mb-6">
+            <i class="fas fa-language"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-neutral-900">AI-powered Translation</h3>
+          <p class="text-neutral-600">Bhashini's AI technology enables seamless translation between Marathi, Hindi, and English.</p>
+        </div>
+
+        <div class="bg-neutral-50 rounded-xl p-8 shadow-lg transform hover:-translate-y-2 transition-transform duration-300 animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
+          <div class="text-[#FF9933] text-4xl mb-6">
+            <i class="fas fa-database"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-neutral-900">Secure Data Storage</h3>
+          <p class="text-neutral-600">Local storage with secure syncing ensures your data is safe and always accessible.</p>
+        </div>
+
+        <div class="bg-neutral-50 rounded-xl p-8 shadow-lg transform hover:-translate-y-2 transition-transform duration-300 animate__animated animate__fadeInUp" style="animation-delay: 0.6s">
+          <div class="text-[#138808] text-4xl mb-6">
+            <i class="fas fa-user-friends"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-neutral-900">User-Friendly Interface</h3>
+          <p class="text-neutral-600">Intuitive design suitable for all literacy levels with voice input support.</p>
+        </div>
+
+        <div class="bg-neutral-50 rounded-xl p-8 shadow-lg transform hover:-translate-y-2 transition-transform duration-300 animate__animated animate__fadeInUp" style="animation-delay: 0.8s">
+          <div class="text-[#FF9933] text-4xl mb-6">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-neutral-900">End-to-End Encryption</h3>
+          <p class="text-neutral-600">Military-grade encryption ensures complete privacy and data security.</p>
+        </div>
+
+        <div class="bg-neutral-50 rounded-xl p-8 shadow-lg transform hover:-translate-y-2 transition-transform duration-300 animate__animated animate__fadeInUp" style="animation-delay: 1s">
+          <div class="text-[#138808] text-4xl mb-6">
+            <i class="fas fa-bell"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-neutral-900">Real-time Updates</h3>
+          <p class="text-neutral-600">Get instant notifications about your complaint status and progress.</p>
+        </div>
+      </div>
+
+      <div class="mt-16 text-center">
+        <button class="px-8 py-4 bg-[#FF9933] text-white rounded-lg text-lg font-semibold hover:bg-[#e88a2a] transition-colors animate__animated animate__pulse animate__infinite">
+          Explore All Features
+        </button>
+      </div>
+    </div>
+  </section>
+</div></element><element id="4762fdf9-3e04-418b-af85-f54c9b273296" data-section-id="4762fdf9-3e04-418b-af85-f54c9b273296">
+
+<div id="root">
+  <section id="impact" class="py-20 bg-neutral-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 animate__animated animate__fadeIn">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Making a Difference</h2>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+          MahaConnect reduces response times, improves communication, and fosters trust in rural communities while saving time and resources for law enforcement agencies.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-neutral-800 rounded-xl p-8 border-t-4 border-[#FF9933] animate__animated animate__fadeInUp">
+          <div class="flex items-center justify-center mb-6">
+            <div class="text-[#FF9933] text-4xl">
+              <i class="fas fa-clock"></i>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-center">Faster Response Times</h3>
+          <p class="text-gray-400 text-center">50% reduction in complaint processing time through automated translation and offline capabilities</p>
+          <div class="mt-6 text-center text-2xl font-bold text-[#FF9933]">
+            50% ↓
+          </div>
+        </div>
+
+        <div class="bg-neutral-800 rounded-xl p-8 border-t-4 border-[#138808] animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
+          <div class="flex items-center justify-center mb-6">
+            <div class="text-[#138808] text-4xl">
+              <i class="fas fa-users"></i>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-center">Community Trust</h3>
+          <p class="text-gray-400 text-center">Improved accessibility and communication leads to stronger community-police relationships</p>
+          <div class="mt-6 text-center text-2xl font-bold text-[#138808]">
+            90% ↑
+          </div>
+        </div>
+
+        <div class="bg-neutral-800 rounded-xl p-8 border-t-4 border-[#FF9933] animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
+          <div class="flex items-center justify-center mb-6">
+            <div class="text-[#FF9933] text-4xl">
+              <i class="fas fa-chart-line"></i>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold mb-4 text-center">Resource Efficiency</h3>
+          <p class="text-gray-400 text-center">Significant reduction in administrative overhead and paper-based processes</p>
+          <div class="mt-6 text-center text-2xl font-bold text-[#FF9933]">
+            70% ↑
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16 bg-neutral-800 rounded-xl p-8 animate__animated animate__fadeInUp">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h3 class="text-2xl font-bold mb-6">Join the Movement</h3>
+            <p class="text-gray-300 mb-6">
+              Transform rural law enforcement and empower communities with MahaConnect. Join us in making justice accessible for all.
+            </p>
+            <button class="px-8 py-4 bg-[#FF9933] text-white rounded-lg text-lg font-semibold hover:bg-[#e88a2a] transition-colors animate__animated animate__pulse animate__infinite">
+              Support MahaConnect
+            </button>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-neutral-700 p-4 rounded-lg text-center">
+              <div class="text-3xl font-bold text-[#138808]">1000+</div>
+              <div class="text-sm text-gray-400">Villages Connected</div>
+            </div>
+            <div class="bg-neutral-700 p-4 rounded-lg text-center">
+              <div class="text-3xl font-bold text-[#FF9933]">5000+</div>
+              <div class="text-sm text-gray-400">Complaints Resolved</div>
+            </div>
+            <div class="bg-neutral-700 p-4 rounded-lg text-center">
+              <div class="text-3xl font-bold text-[#138808]">100+</div>
+              <div class="text-sm text-gray-400">Police Stations</div>
+            </div>
+            <div class="bg-neutral-700 p-4 rounded-lg text-center">
+              <div class="text-3xl font-bold text-[#FF9933]">24/7</div>
+              <div class="text-sm text-gray-400">Support</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div></element><element id="339e16f8-1f26-489d-aa5c-370d30bf821b" data-section-id="339e16f8-1f26-489d-aa5c-370d30bf821b">
+
+<div id="root">
+  <section id="download" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-r from-[#FF9933] to-[#138808] rounded-2xl p-8 md:p-12">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="text-white animate__animated animate__fadeInLeft">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">
+              Join us in making justice accessible for all
+            </h2>
+            <p class="text-xl mb-8">
+              Explore how MahaConnect can transform rural law enforcement and empower communities across Maharashtra.
+            </p>
+            <div class="space-y-4">
+              <div class="flex items-center">
+                <i class="fas fa-check-circle mr-3 text-white"></i>
+                <span>Free to download and use</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-check-circle mr-3 text-white"></i>
+                <span>Available in multiple languages</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-check-circle mr-3 text-white"></i>
+                <span>24/7 support available</span>
+              </div>
+            </div>
+            <div class="mt-8 flex flex-wrap gap-4">
+              <button class="bg-black text-white px-8 py-4 rounded-lg flex items-center hover:bg-neutral-800 transition-colors">
+                <i class="fab fa-google-play text-2xl mr-3"></i>
+                <div class="text-left">
+                  <div class="text-xs">Get it on</div>
+                  <div class="text-sm font-bold">Google Play</div>
+                </div>
+              </button>
+              <button class="bg-black text-white px-8 py-4 rounded-lg flex items-center hover:bg-neutral-800 transition-colors">
+                <i class="fab fa-apple text-2xl mr-3"></i>
+                <div class="text-left">
+                  <div class="text-xs">Download on the</div>
+                  <div class="text-sm font-bold">App Store</div>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <div class="animate__animated animate__fadeInRight">
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+              <div class="text-center mb-6">
+                <div class="text-4xl text-[#FF9933] mb-4">
+                  <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-neutral-900">Get Started Now</h3>
+                <p class="text-neutral-600 mt-2">Download the app and start making a difference</p>
+              </div>
+              <form class="space-y-4">
+                <div>
+                  <input type="text" placeholder="Full Name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#FF9933] focus:border-transparent">
+                </div>
+                <div>
+                  <input type="email" placeholder="Email Address" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#FF9933] focus:border-transparent">
+                </div>
+                <div>
+                  <input type="tel" placeholder="Phone Number" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#FF9933] focus:border-transparent">
+                </div>
+                <button class="w-full bg-[#138808] text-white py-4 rounded-lg font-semibold hover:bg-[#107006] transition-colors">
+                  Request Download Link
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div></element><element id="74ea61c2-0e32-48f4-a762-b65669fd8dd6" data-section-id="74ea61c2-0e32-48f4-a762-b65669fd8dd6">
+
+<div id="root">
+  <section id="contact" class="py-20 bg-neutral-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="text-white animate__animated animate__fadeInLeft">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Get in Touch</h2>
+          <p class="text-gray-300 mb-8">
+            Have questions about MahaConnect? We're here to help. Reach out to our team for support, partnerships, or general inquiries.
+          </p>
+          
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div class="text-[#FF9933] text-xl mt-1">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-lg font-semibold">Email</h3>
+                <p class="text-gray-300">sauravXzent@proton.me</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="text-[#138808] text-xl mt-1">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-lg font-semibold">Location</h3>
+                <p class="text-gray-300">Maharashtra, India</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="text-[#FF9933] text-xl mt-1">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-lg font-semibold">Support Hours</h3>
+                <p class="text-gray-300">24/7 Available</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <div class="flex space-x-4">
+              <a href="#" class="text-white hover:text-[#FF9933] transition-colors">
+                <i class="fab fa-twitter text-2xl"></i>
+              </a>
+              <a href="#" class="text-white hover:text-[#FF9933] transition-colors">
+                <i class="fab fa-facebook text-2xl"></i>
+              </a>
+              <a href="#" class="text-white hover:text-[#FF9933] transition-colors">
+                <i class="fab fa-linkedin text-2xl"></i>
+              </a>
+              <a href="#" class="text-white hover:text-[#FF9933] transition-colors">
+                <i class="fab fa-instagram text-2xl"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="animate__animated animate__fadeInRight">
+          <form class="bg-neutral-800 p-8 rounded-xl">
+            <div class="space-y-6">
+              <div>
+                <label class="block text-white mb-2">Name</label>
+                <input type="text" class="w-full px-4 py-3 rounded-lg bg-neutral-700 text-white border border-neutral-600 focus:ring-2 focus:ring-[#FF9933] focus:border-transparent" placeholder="Your Name">
+              </div>
+              
+              <div>
+                <label class="block text-white mb-2">Email</label>
+                <input type="email" class="w-full px-4 py-3 rounded-lg bg-neutral-700 text-white border border-neutral-600 focus:ring-2 focus:ring-[#FF9933] focus:border-transparent" placeholder="your@email.com">
+              </div>
+              
+              <div>
+                <label class="block text-white mb-2">Subject</label>
+                <select class="w-full px-4 py-3 rounded-lg bg-neutral-700 text-white border border-neutral-600 focus:ring-2 focus:ring-[#FF9933] focus:border-transparent">
+                  <option>General Inquiry</option>
+                  <option>Technical Support</option>
+                  <option>Partnership</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              
+              <div>
+                <label class="block text-white mb-2">Message</label>
+                <textarea rows="4" class="w-full px-4 py-3 rounded-lg bg-neutral-700 text-white border border-neutral-600 focus:ring-2 focus:ring-[#FF9933] focus:border-transparent" placeholder="Your message..."></textarea>
+              </div>
+
+              <button type="submit" class="w-full bg-gradient-to-r from-[#FF9933] to-[#138808] text-white py-4 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                Send Message
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div></element><element id="6f8604f3-c6ed-499d-98e2-727e0b52aab9" data-section-id="6f8604f3-c6ed-499d-98e2-727e0b52aab9">
+
+<div id="root">
+  <footer id="footer" class="bg-neutral-900 text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div>
+          <h3 class="text-2xl font-bold text-[#FF9933] mb-6">MahaConnect</h3>
+          <p class="text-gray-400 mb-6">
+            Empowering rural communities with accessible justice through technology.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-[#FF9933] transition-colors">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-[#FF9933] transition-colors">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-[#FF9933] transition-colors">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-[#FF9933] transition-colors">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-semibold mb-6">Quick Links</h4>
+          <ul class="space-y-3">
+            <li>
+              <a href="#hero" class="text-gray-400 hover:text-[#FF9933] transition-colors">Home</a>
+            </li>
+            <li>
+              <a href="#problem" class="text-gray-400 hover:text-[#FF9933] transition-colors">Problem</a>
+            </li>
+            <li>
+              <a href="#solution" class="text-gray-400 hover:text-[#FF9933] transition-colors">Solution</a>
+            </li>
+            <li>
+              <a href="#features" class="text-gray-400 hover:text-[#FF9933] transition-colors">Features</a>
+            </li>
+            <li>
+              <a href="#impact" class="text-gray-400 hover:text-[#FF9933] transition-colors">Impact</a>
+            </li>
+            <li>
+              <a href="#download" class="text-gray-400 hover:text-[#FF9933] transition-colors">Download</a>
+            </li>
+            <li>
+              <a href="#contact" class="text-gray-400 hover:text-[#FF9933] transition-colors">Contact</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-semibold mb-6">Legal</h4>
+          <ul class="space-y-3">
+            <li>
+              <a href="#privacy" class="text-gray-400 hover:text-[#FF9933] transition-colors">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="#terms" class="text-gray-400 hover:text-[#FF9933] transition-colors">Terms of Use</a>
+            </li>
+            <li>
+              <a href="#contact" class="text-gray-400 hover:text-[#FF9933] transition-colors">Contact</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-semibold mb-6">Contact</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li class="flex items-center">
+              <i class="fas fa-envelope text-[#138808] mr-3"></i>
+              sauravXzent@proton.me
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-phone text-[#138808] mr-3"></i>
+              24/7 Support Available
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-map-marker-alt text-[#138808] mr-3"></i>
+              Maharashtra, India
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-neutral-800 pt-8 mt-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <p class="text-gray-400 text-sm mb-4 md:mb-0">
+            © 2025 MahaConnect. All rights reserved.
+          </p>
+          <div class="flex space-x-6">
+            <a href="#" class="text-gray-400 hover:text-[#FF9933] text-sm transition-colors">Terms of Service</a>
+            <a href="#" class="text-gray-400 hover:text-[#FF9933] text-sm transition-colors">Privacy Policy</a>
+            <a href="#" class="text-gray-400 hover:text-[#FF9933] text-sm transition-colors">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div></element></div>
+            <div id="page_complete">
+            <script src="/edit/edit.js"></script>
+            <script>
+                console.log('Page complete');
+                
+            </script>
+            </body>
+            </html>
+          
